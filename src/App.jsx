@@ -328,6 +328,7 @@ const handleSubmit = async (e) => {
               role="Java Full-Stack Developer"
               description="Builds Java-based applications and supports full-stack development, project integration and client communication."
               skills={["Java", "Full Stack", "Integration"]}
+              github="https://github.com/s-softech"
             />
           </div>
         </section>
