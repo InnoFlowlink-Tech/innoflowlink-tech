@@ -424,6 +424,13 @@ const handleSubmit = async (e) => {
                 digital product.
               </p>
 
+              <p className="contact-text">
+                Email us at{" "}
+                <a href="mailto:innoflowlink4202@gmail.com">
+                  innoflowlink4202@gmail.com
+                </a>
+              </p>
+
               <div className="contact-points">
                 <div>
                   <span>01</span>
@@ -632,6 +639,10 @@ const handleSubmit = async (e) => {
 
               <a href="#contact">
                 Get a Quote
+              </a>
+
+              <a href="mailto:innoflowlink4202@gmail.com">
+                innoflowlink4202@gmail.com
               </a>
 
               <a href="#admin">
