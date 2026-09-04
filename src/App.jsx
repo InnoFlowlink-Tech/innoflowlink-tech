@@ -310,6 +310,7 @@ const handleSubmit = async (e) => {
               role="Frontend Developer"
               description="Focused on responsive user interfaces, modern frontend development and clean user experiences for web applications."
               skills={["Frontend", "Web UI", "Python Web"]}
+              github="https://github.com/raneethrao"
             />
 
             <TeamCard
@@ -1411,6 +1412,7 @@ function TeamCard({
   role,
   description,
   skills,
+  github,
 }) {
   return (
     <article className="team-card">
@@ -1433,6 +1435,18 @@ function TeamCard({
           </span>
         ))}
       </div>
+
+      {github && (
+        <a
+          href={github}
+          target="_blank"
+          rel="noreferrer"
+          className="team-github-link"
+          aria-label={`View ${name}'s GitHub profile`}
+        >
+          GitHub Profile →
+        </a>
+      )}
 
     </article>
   );
