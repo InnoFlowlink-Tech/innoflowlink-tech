@@ -139,21 +139,13 @@ const handleSubmit = async (e) => {
             </div>
           </div>
 
-          <div className="hero-card">
-            <div className="availability">
-              <span className="status-dot"></span>
-              <p>Available for New Projects</p>
-            </div>
-
-            <h3>Web • AI • Software</h3>
-
-            <div className="tech-grid">
-              <span>React</span>
-              <span>Python</span>
-              <span>Java</span>
-              <span>AI / ML</span>
-              <span>REST APIs</span>
-              <span>Databases</span>
+          <div className="hero-logo-wrap" aria-label="InnoFlowlink Tech company logo">
+            <div className="hero-logo-ring">
+              <img
+                src="/innoflowlink-logo.jpg"
+                alt="InnoFlowlink Tech logo"
+                className="hero-logo-image"
+              />
             </div>
           </div>
         </section>
