@@ -319,6 +319,7 @@ const handleSubmit = async (e) => {
               role="Python Full-Stack Developer"
               description="Works across frontend and backend development while supporting requirement gathering and client communication."
               skills={["Python", "Full Stack", "Client Relations"]}
+              github="https://github.com/Srinuyadlapalli26"
             />
 
             <TeamCard
