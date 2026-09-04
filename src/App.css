@@ -859,6 +859,26 @@ nav a:hover {
   padding-top: 24px;
 }
 
+.team-github-link {
+  width: fit-content;
+
+  margin-top: 17px;
+
+  color: #60a5fa;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.team-github-link:hover {
+  color: #93c5fd;
+
+  text-decoration: underline;
+}
+
 
 /* =========================================
    PROCESS
