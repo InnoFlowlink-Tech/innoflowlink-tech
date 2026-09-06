@@ -99,11 +99,12 @@ const handleSubmit = async (e) => {
 
         <nav>
           <a href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
-          <a href="#process">Process</a>
-          <a href="#contact">Contact</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<a href="#tech-stack">Tech Stack</a>
+<a href="#about">About</a>
+<a href="#process">Process</a>
+<a href="#contact">Contact</a>
         </nav>
 
         <a href="#contact" className="quote-btn">
@@ -235,46 +236,140 @@ const handleSubmit = async (e) => {
         </section>
 
 
-        {/* PROJECTS */}
+
+               {/* CASE STUDIES */}
         <section className="section projects" id="projects">
           <SectionHeading
-            label="Featured Projects"
-            title="Ideas Turned Into Working Solutions"
-            description="Explore systems built using modern software, blockchain and artificial intelligence technologies."
+            label="Case Studies"
+            title="Engineering Ideas Into Working Solutions"
+            description="A closer look at projects we have built, the problems they address and the technologies behind them."
           />
 
-          <div className="projects-grid">
-            <ProjectCard
-              number="01"
-              type="Blockchain • Web3"
-              title="BlockVault"
-              subtitle="Secure File Sharing using Blockchain & IPFS"
-              description="A decentralized file-sharing platform designed to provide secure storage, controlled access and transparent file ownership using blockchain and IPFS."
-              technologies={[
-                "React",
-                "Node.js",
-                "Ethereum",
-                "IPFS",
-                "Solidity",
-              ]}
-              link="https://github.com/gogulaajay2004-design/blockvault"
-            />
+          <div className="case-studies-grid">
 
-            <ProjectCard
-              number="02"
-              type="AI • Machine Learning"
-              title="AI System Monitor"
-              subtitle="AI-Powered Real-Time System Monitoring"
-              description="An intelligent monitoring system that tracks CPU, RAM and system performance while using machine learning for prediction and anomaly detection."
-              technologies={[
-                "Python",
-                "Machine Learning",
-                "Streamlit",
-                "Scikit-learn",
-              ]}
-              link="https://github.com/gogulaajay2004-design/ai-powered-system-monitor"
-              featured
-            />
+            {/* BLOCKVAULT */}
+            <article className="case-study-card">
+              <div className="case-study-top">
+                <span className="case-number">01</span>
+                <span className="case-type">Blockchain • Web3</span>
+              </div>
+
+              <h3>BlockVault</h3>
+
+              <p className="case-subtitle">
+                Secure File Sharing using Blockchain & IPFS
+              </p>
+
+              <div className="case-section">
+                <h4>Problem</h4>
+                <p>
+                  Traditional file-sharing systems depend heavily on centralized
+                  storage and can make ownership, access control and file
+                  activity difficult to verify transparently.
+                </p>
+              </div>
+
+              <div className="case-section">
+                <h4>Solution</h4>
+                <p>
+                  BlockVault combines blockchain and IPFS to create a
+                  decentralized file-sharing workflow with controlled access,
+                  verifiable ownership and secure file handling.
+                </p>
+              </div>
+
+              <div className="case-section">
+                <h4>Key Features</h4>
+                <ul className="case-features">
+                  <li>MetaMask wallet authentication</li>
+                  <li>IPFS-based decentralized file storage</li>
+                  <li>Blockchain-based ownership records</li>
+                  <li>Controlled file sharing and access</li>
+                  <li>Secure file encryption workflow</li>
+                </ul>
+              </div>
+
+              <div className="case-tech">
+                {["React", "Node.js", "Ethereum", "IPFS", "Solidity"].map(
+                  (tech) => (
+                    <span key={tech}>{tech}</span>
+                  )
+                )}
+              </div>
+
+              <a
+                href="https://github.com/gogulaajay2004-design/blockvault"
+                target="_blank"
+                rel="noreferrer"
+                className="case-link"
+              >
+                View Project on GitHub →
+              </a>
+            </article>
+
+            {/* AI SYSTEM MONITOR */}
+            <article className="case-study-card featured-case">
+              <div className="case-study-top">
+                <span className="case-number">02</span>
+                <span className="case-type">AI • Machine Learning</span>
+              </div>
+
+              <h3>AI System Monitor</h3>
+
+              <p className="case-subtitle">
+                AI-Powered Real-Time System Monitoring
+              </p>
+
+              <div className="case-section">
+                <h4>Problem</h4>
+                <p>
+                  Traditional monitoring tools mainly report current system
+                  usage and may not provide predictive insight into future
+                  resource behavior or unusual activity.
+                </p>
+              </div>
+
+              <div className="case-section">
+                <h4>Solution</h4>
+                <p>
+                  The AI System Monitor collects live system metrics and applies
+                  machine-learning models to analyze resource usage, predict
+                  short-term behavior and identify anomalies.
+                </p>
+              </div>
+
+              <div className="case-section">
+                <h4>Key Features</h4>
+                <ul className="case-features">
+                  <li>Real-time CPU and RAM monitoring</li>
+                  <li>System performance dashboard</li>
+                  <li>Machine-learning based prediction</li>
+                  <li>Anomaly detection</li>
+                  <li>Historical system metrics analysis</li>
+                </ul>
+              </div>
+
+              <div className="case-tech">
+                {[
+                  "Python",
+                  "Machine Learning",
+                  "Streamlit",
+                  "Scikit-learn",
+                ].map((tech) => (
+                  <span key={tech}>{tech}</span>
+                ))}
+              </div>
+
+              <a
+                href="https://github.com/gogulaajay2004-design/ai-powered-system-monitor"
+                target="_blank"
+                rel="noreferrer"
+                className="case-link"
+              >
+                View Project on GitHub →
+              </a>
+            </article>
+
           </div>
         </section>
                {/* TECH STACK */}
