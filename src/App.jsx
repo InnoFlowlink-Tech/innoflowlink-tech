@@ -277,6 +277,57 @@ const handleSubmit = async (e) => {
             />
           </div>
         </section>
+               {/* TECH STACK */}
+        <section className="section tech-stack" id="tech-stack">
+          <SectionHeading
+            label="Technology Stack"
+            title="Modern Technologies for Reliable Software"
+            description="We choose practical technologies based on the product, scalability needs and business requirements."
+          />
+
+          <div className="tech-grid">
+            {[
+              "Python",
+              "Java",
+              "JavaScript",
+              "React",
+              "Node.js",
+              "Express",
+              "Django",
+              "FastAPI",
+              "MongoDB",
+              "MySQL",
+              "REST APIs",
+              "Machine Learning",
+              "Generative AI",
+              "Git & GitHub",
+            ].map((tech) => (
+              <div className="tech-card" key={tech}>
+                {tech}
+              </div>
+            ))}
+          </div>
+
+          <div className="github-org-box">
+            <div>
+              <p className="github-org-label">Company GitHub</p>
+              <h3>InnoFlowlink Tech Organization</h3>
+              <p>
+                Explore our development work, repositories and engineering
+                activity on GitHub.
+              </p>
+            </div>
+
+            <a
+              href="https://github.com/InnoFlowlink-Tech"
+              target="_blank"
+              rel="noreferrer"
+              className="github-org-btn"
+            >
+              Visit GitHub Organization
+            </a>
+          </div>
+        </section>
 
 
         {/* TEAM */}
