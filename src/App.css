@@ -1587,3 +1587,158 @@ nav a:hover {
     padding: 6px;
   }
 }
+
+/* =========================================
+   TECH STACK
+========================================= */
+
+.tech-stack {
+  position: relative;
+}
+
+.tech-grid {
+  margin-top: 45px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.tech-card {
+  min-height: 75px;
+
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  color: #dbeafe;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(96, 165, 250, 0.55);
+
+  background: rgba(37, 99, 235, 0.1);
+}
+
+
+/* COMPANY GITHUB */
+
+.github-org-box {
+  margin-top: 35px;
+  padding: 30px 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37, 99, 235, 0.12),
+      rgba(139, 92, 246, 0.08)
+    );
+
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 18px;
+}
+
+.github-org-label {
+  margin-bottom: 8px;
+
+  color: #60a5fa;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+}
+
+.github-org-box h3 {
+  margin-bottom: 9px;
+
+  font-size: 22px;
+}
+
+.github-org-box > div > p:last-child {
+  max-width: 650px;
+
+  color: #9da9bd;
+
+  line-height: 1.7;
+}
+
+.github-org-btn {
+  flex-shrink: 0;
+
+  padding: 13px 20px;
+
+  background: #2563eb;
+
+  border-radius: 10px;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.github-org-btn:hover {
+  transform: translateY(-2px);
+  background: #3b82f6;
+}
+
+
+/* TECH STACK RESPONSIVE */
+
+@media (max-width: 900px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .github-org-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .github-org-box {
+    padding: 24px 20px;
+  }
+
+  .github-org-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
