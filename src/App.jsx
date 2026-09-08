@@ -655,13 +655,19 @@ const handleSubmit = async (e) => {
           Select project type
         </option>
 
-        <option value="Business Website">Business Website</option>
-        <option value="E-commerce">E-commerce</option>
-        <option value="Web Application">Web Application</option>
-        <option value="Backend / API">Backend / API</option>
-        <option value="AI / ML Project">AI / ML Project</option>
-        <option value="Generative AI">Generative AI</option>
-        <option value="Custom Software">Custom Software</option>
+        <option value="Website Development">Website Development</option>
+        <option value="Android App Development">Android App Development</option>
+        <option value="iOS App Development">iOS App Development</option>
+        <option value="Full-Stack Web Application">Full-Stack Web Application</option>
+        <option value="E-commerce Development">E-commerce Development</option>
+        <option value="Game Development">Game Development</option>
+        <option value="AI / Machine Learning">AI / Machine Learning</option>
+        <option value="Data Science & Analytics">Data Science &amp; Analytics</option>
+        <option value="Blockchain Development">Blockchain Development</option>
+        <option value="UI/UX Design">UI/UX Design</option>
+        <option value="API & Backend Development">API &amp; Backend Development</option>
+        <option value="Software Testing & Maintenance">Software Testing &amp; Maintenance</option>
+        <option value="Other">Other</option>
       </select>
     </div>
 
