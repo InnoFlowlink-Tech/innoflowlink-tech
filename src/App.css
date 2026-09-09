@@ -1895,3 +1895,48 @@ nav a:hover {
     font-size: 24px;
   }
 }
+
+/* Public pages and accessible navigation; retain the existing brand. */
+:where(a, button, input, select, textarea, summary):focus-visible { outline: 3px solid #93c5fd; outline-offset: 4px; }
+[id] { scroll-margin-top: 110px; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 2000; background: #fff; color: #070b14; padding: 14px; }
+.skip-link:focus { top: 12px; }
+.menu-toggle { display: none; background: transparent; border: 1px solid #64748b; color: white; border-radius: 8px; padding: 10px; min-height: 44px; }
+.navbar nav a { min-height: 44px; display: inline-flex; align-items: center; }
+.navbar nav a[aria-current="page"] { color: #93c5fd; }
+.page-intro { padding-bottom: 50px; }
+.page-intro h1 { max-width: 950px; font-size: clamp(34px, 5vw, 64px); line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; }
+.page-intro > p:not(.eyebrow), .detail-content p, .faq p { max-width: 800px; color: #b1bfd2; font-size: 16px; line-height: 1.8; }
+.detail-content { padding-top: 20px; padding-bottom: 30px; }
+.detail-content article { max-width: 850px; margin-bottom: 42px; }
+.detail-content h2, .faq h2, .related-services h2 { font-size: clamp(24px, 3vw, 32px); margin-bottom: 18px; line-height: 1.25; }
+.faq { background: #090e18; }
+.faq details { max-width: 850px; border-bottom: 1px solid #334155; padding: 22px 0; }
+.faq summary { cursor: pointer; font-weight: 600; line-height: 1.6; }
+.faq details p { margin-top: 14px; }
+.related-services ul { padding-left: 20px; line-height: 2.5; margin-bottom: 22px; }
+.project-status { margin: 12px 0; color: #a9c2ff; line-height: 1.6; }
+.form-help { color: #b1bfd2; font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+.submit-btn:disabled { opacity: .7; cursor: wait; transform: none; }
+.footer-links h2 { font-size: 16px; margin-bottom: 7px; }
+.footer-links a, .contact-text a { overflow-wrap: anywhere; }
+.service-card .case-link { margin-top: 18px; font-size: 14px; }
+@media (max-width: 1100px) {
+  .navbar { gap: 14px; padding-left: 5%; padding-right: 5%; }
+  .navbar nav { gap: 16px; }
+}
+@media (max-width: 900px) {
+  .menu-toggle { display: inline-flex; margin-left: auto; }
+  .navbar nav { display: none; }
+  .navbar nav.nav-open { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 6%; background: #0c121d; border-bottom: 1px solid #334155; }
+  .navbar nav a { padding: 10px 0; }
+}
+@media (max-width: 450px) {
+  .navbar { gap: 8px; }
+  .navbar .quote-btn { min-height: 44px; display: inline-flex; align-items: center; font-size: 12px; }
+  .logo { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

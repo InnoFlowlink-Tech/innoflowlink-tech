@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://innoflowlink-tech.onrender.com/sitemap.xml

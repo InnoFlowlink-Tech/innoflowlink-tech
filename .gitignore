@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 .env
 server/.env
+
+.prerender/
+.env.*
+server/.env.*
