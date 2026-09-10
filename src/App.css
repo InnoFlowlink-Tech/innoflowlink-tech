@@ -857,6 +857,24 @@ nav a:hover {
     );
 }
 
+.team-avatar-photo {
+  width: 96px;
+  height: 96px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 2px solid rgba(96, 165, 250, 0.45);
+  background: #0b1220;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.2);
+}
+
+.team-avatar-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
 .team-card h3 {
   margin-bottom: 6px;
 

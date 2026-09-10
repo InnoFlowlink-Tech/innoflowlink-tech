@@ -454,14 +454,17 @@ const handleSubmit = async (e) => {
           <div className="team-grid">
             <TeamCard
               initials="A"
-              name="AJAY"
-              role="Technical Lead"
+              image="/team/ajay.webp"
+              name="GOGULA AJAY"
+              role="Founder & Technical Lead"
               description="Python Full-Stack Developer focused on backend architecture, integrations, AI/ML solutions and final product delivery."
               skills={["Python", "Full Stack", "AI / ML", "APIs"]}
+              github="https://github.com/gogulaajay2004-design"
             />
 
             <TeamCard
               initials="R"
+              image="/team/raneeth-rao.webp"
               name="RANEETH RAO"
               role="Frontend Developer"
               description="Focused on responsive user interfaces, modern frontend development and clean user experiences for web applications."
@@ -471,7 +474,8 @@ const handleSubmit = async (e) => {
 
             <TeamCard
               initials="S"
-              name="SRINU"
+              image="/team/y-srinu.webp"
+              name="Y. SRINU"
               role="Python Full-Stack Developer"
               description="Works across frontend and backend development while supporting requirement gathering and client communication."
               skills={["Python", "Full Stack", "Client Relations"]}
@@ -480,7 +484,8 @@ const handleSubmit = async (e) => {
 
             <TeamCard
               initials="SK"
-              name="SIDDHIK"
+              image="/team/s-k-siddhik.webp"
+              name="S.K. SIDDHIK"
               role="Java Full-Stack Developer"
               description="Builds Java-based applications and supports full-stack development, project integration and client communication."
               skills={["Java", "Full Stack", "Integration"]}
@@ -882,6 +887,7 @@ function SolutionCard({
 
 function TeamCard({
   initials,
+  image,
   name,
   role,
   description,
@@ -891,8 +897,16 @@ function TeamCard({
   return (
     <article className="team-card">
 
-      <div className="team-avatar">
-        {initials}
+      <div className={`team-avatar${image ? " team-avatar-photo" : ""}`}>
+        {image ? (
+          <img
+            src={image}
+            alt={`${name}, ${role} at InnoFlowlink Tech`}
+            width="600"
+            height="720"
+            loading="lazy"
+          />
+        ) : initials}
       </div>
 
       <h3>{name}</h3>
@@ -956,5 +970,3 @@ function ProcessStep({
     </article>
   );
 }
-
-
