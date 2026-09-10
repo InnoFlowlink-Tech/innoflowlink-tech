@@ -456,7 +456,7 @@ const handleSubmit = async (e) => {
               initials="A"
               image="/team/ajay.webp"
               name="GOGULA AJAY"
-              role="Founder & Technical Lead"
+              role="Technical Lead"
               description="Python Full-Stack Developer focused on backend architecture, integrations, AI/ML solutions and final product delivery."
               skills={["Python", "Full Stack", "AI / ML", "APIs"]}
               github="https://github.com/gogulaajay2004-design"
