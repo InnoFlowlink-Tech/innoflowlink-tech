@@ -8,11 +8,7 @@ const mongoose = require("mongoose");
 const { Resend } = require("resend");
 
 const app = express();
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// ==========================================
-// MIDDLEWARE
-// ==========================================
+let resend = null;
 
 app.use(helmet());
 app.use(cors());
@@ -27,10 +23,6 @@ const contactLimiter = rateLimit({
   },
 });
 
-// ==========================================
-// MONGODB CONNECTION
-// ==========================================
-
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
@@ -40,10 +32,6 @@ mongoose
     console.error("MongoDB Connection Error:", error.message);
   });
 
-// ==========================================
-// CONTACT SCHEMA
-// ==========================================
-
 const contactSchema = new mongoose.Schema(
   {
     name: {
@@ -51,38 +39,32 @@ const contactSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-
     email: {
       type: String,
       required: true,
       trim: true,
       lowercase: true,
     },
-
     phone: {
       type: String,
       default: "",
       trim: true,
     },
-
     projectType: {
       type: String,
       required: true,
       trim: true,
     },
-
     budget: {
       type: String,
       required: true,
       trim: true,
     },
-
     requirement: {
       type: String,
       required: true,
       trim: true,
     },
-
     status: {
       type: String,
       enum: ["New", "Contacted", "In Progress", "Completed"],
@@ -94,15 +76,7 @@ const contactSchema = new mongoose.Schema(
   }
 );
 
-// ==========================================
-// CONTACT MODEL
-// ==========================================
-
 const Contact = mongoose.model("Contact", contactSchema);
-
-// ==========================================
-// ADMIN SECURITY MIDDLEWARE
-// ==========================================
 
 const verifyAdmin = (req, res, next) => {
   const adminKey = req.headers["x-admin-key"];
@@ -124,17 +98,9 @@ const verifyAdmin = (req, res, next) => {
   next();
 };
 
-// ==========================================
-// HOME ROUTE
-// ==========================================
-
 app.get("/", (req, res) => {
   res.send("InnoFlowlink Tech Backend Running");
 });
-
-// ==========================================
-// HEALTH CHECK
-// ==========================================
 
 app.get("/api/health", (req, res) => {
   res.json({
@@ -142,10 +108,6 @@ app.get("/api/health", (req, res) => {
     message: "Backend is working",
   });
 });
-
-// ==========================================
-// SAVE CLIENT REQUIREMENT
-// ==========================================
 
 app.post("/api/contact", contactLimiter, async (req, res) => {
   try {
@@ -165,7 +127,6 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
       });
     }
 
-    // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailPattern.test(email.trim())) {
@@ -175,7 +136,6 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
       });
     }
 
-    // Save requirement to MongoDB
     const newContact = await Contact.create({
       name: name.trim(),
       email: email.trim(),
@@ -187,9 +147,10 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
 
     console.log("New Client Requirement Saved:", newContact._id);
 
-    // Email failure will not affect database saving
     if (process.env.RESEND_API_KEY && process.env.NOTIFY_EMAIL) {
       try {
+        resend = resend || new Resend(process.env.RESEND_API_KEY);
+
         const emailResult = await resend.emails.send({
           from: "InnoFlowlink Tech <onboarding@resend.dev>",
           to: process.env.NOTIFY_EMAIL,
@@ -198,32 +159,28 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
             <h2>New Client Requirement</h2>
             <p><strong>Name:</strong> ${newContact.name}</p>
             <p><strong>Email:</strong> ${newContact.email}</p>
-            <p>
-              <strong>Phone:</strong>
-              ${newContact.phone || "Not provided"}
-            </p>
-            <p>
-              <strong>Project Type:</strong>
-              ${newContact.projectType}
-            </p>
+            <p><strong>Phone:</strong> ${
+              newContact.phone || "Not provided"
+            }</p>
+            <p><strong>Project Type:</strong> ${
+              newContact.projectType
+            }</p>
             <p><strong>Budget:</strong> ${newContact.budget}</p>
-            <p>
-              <strong>Requirement:</strong>
-              ${newContact.requirement}
-            </p>
+            <p><strong>Requirement:</strong> ${
+              newContact.requirement
+            }</p>
             <p><strong>Status:</strong> ${newContact.status}</p>
           `,
         });
 
         console.log("Email Notification Sent:", emailResult);
       } catch (emailError) {
-        console.error(
-          "Email Notification Error:",
-          emailError.message
-        );
+        console.error("Email Notification Error:", emailError.message);
       }
     } else {
-      console.log("Email notification skipped: credentials not configured");
+      console.log(
+        "Email notification skipped: credentials not configured"
+      );
     }
 
     return res.status(201).json({
@@ -240,10 +197,6 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
     });
   }
 });
-
-// ==========================================
-// GET ALL REQUIREMENTS - ADMIN
-// ==========================================
 
 app.get("/api/admin/contacts", verifyAdmin, async (req, res) => {
   try {
@@ -263,10 +216,6 @@ app.get("/api/admin/contacts", verifyAdmin, async (req, res) => {
     });
   }
 });
-
-// ==========================================
-// UPDATE REQUIREMENT STATUS - ADMIN
-// ==========================================
 
 app.patch(
   "/api/admin/contacts/:id/status",
@@ -321,10 +270,6 @@ app.patch(
   }
 );
 
-// ==========================================
-// DELETE REQUIREMENT - ADMIN
-// ==========================================
-
 app.delete(
   "/api/admin/contacts/:id",
   verifyAdmin,
@@ -354,12 +299,8 @@ app.delete(
   }
 );
 
-// ==========================================
-// SERVER
-// ==========================================
-
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
