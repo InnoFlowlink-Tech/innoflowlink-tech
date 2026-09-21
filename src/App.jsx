@@ -107,7 +107,7 @@ const handleSubmit = async (e) => {
       {/* NAVBAR */}
       <header className="navbar">
         <a href="/#home" className="logo">
-          <span className="logo-line"></span>
+          <span className="brand-mark"><img src="/innoflowlink-logo.jpg" width="42" height="42" alt="" /></span>
           InnoFlowlink Tech
         </a>
 
@@ -116,7 +116,7 @@ const handleSubmit = async (e) => {
           <a href="/#services">Services</a>
           <a href="/#projects">Work</a>
           <a href="/#process">Process</a>
-          <a href="/#about">About</a>
+          <a href="/about/" aria-current={pagePath === "/about/" ? "page" : undefined}>About</a>
           <a href="/#faq">FAQ</a>
         </nav>
 
@@ -126,7 +126,7 @@ const handleSubmit = async (e) => {
       </header>
 
       <main id="main" tabIndex="-1">
-        {!home && <PageContent page={page} />}
+        {!home && <PageContent page={page} pagePath={pagePath} />}
 
         {/* HERO */}
         {(home) && (<section className="hero" id="home">
@@ -749,7 +749,7 @@ const handleSubmit = async (e) => {
 
           <div className="footer-brand">
             <a href="/#home" className="logo">
-              <span className="logo-line"></span>
+              <span className="brand-mark"><img src="/innoflowlink-logo.jpg" width="42" height="42" alt="" /></span>
               InnoFlowlink Tech
             </a>
 
