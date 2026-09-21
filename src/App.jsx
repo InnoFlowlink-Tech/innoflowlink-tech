@@ -107,26 +107,26 @@ const handleSubmit = async (e) => {
       {/* NAVBAR */}
       <header className="navbar">
         <a href="/#home" className="logo">
-          <span className="brand-mark"><img src="/innoflowlink-logo.jpg" width="42" height="42" alt="" /></span>
+          <span className="logo-line"></span>
           InnoFlowlink Tech
         </a>
 
         <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={() => setMenuOpen(!menuOpen)}>Menu</button>
         <nav id="primary-navigation" aria-label="Main navigation" className={menuOpen ? "nav-open" : ""} onClick={() => setMenuOpen(false)}>
+          <a href="/" aria-current={home ? "page" : undefined}>Home</a>
           <a href="/#services">Services</a>
-          <a href="/#projects">Work</a>
-          <a href="/#process">Process</a>
+          <a href="/portfolio/" aria-current={pagePath === "/portfolio/" ? "page" : undefined}>Portfolio</a>
           <a href="/about/" aria-current={pagePath === "/about/" ? "page" : undefined}>About</a>
-          <a href="/#faq">FAQ</a>
+          <a href="/contact/" aria-current={pagePath === "/contact/" ? "page" : undefined}>Contact</a>
         </nav>
 
         <a href="/contact/#contact" className="quote-btn">
-          Start a project ↗
+          Get a Quote
         </a>
       </header>
 
       <main id="main" tabIndex="-1">
-        {!home && <PageContent page={page} pagePath={pagePath} />}
+        {!home && <PageContent page={page} />}
 
         {/* HERO */}
         {(home) && (<section className="hero" id="home">
@@ -134,8 +134,8 @@ const handleSubmit = async (e) => {
             <p className="eyebrow">Build • Innovate • Deliver</p>
 
             <h1>
-              Build digital products
-              <span>that move your business forward</span>
+              Smart Software Solutions
+              <span>For Modern Businesses</span>
             </h1>
 
             <p className="hero-text">
@@ -154,14 +154,14 @@ const handleSubmit = async (e) => {
             </div>
           </div>
 
-          <div className="hero-logo-wrap" aria-label="A visual of our product design and delivery process">
-            <div className="product-window">
-              <div className="product-window-bar"><span className="mini-brand">✳</span><span>product / system</span><b><i /> IN MOTION</b></div>
-              <div className="product-window-body">
-                <div className="product-intro"><small>BUILD MAP / 01</small><strong>From idea<br />to useful.</strong></div>
-                <div className="product-steps"><article><small>01</small><b>Brief</b><span>what matters</span></article><article><small>02</small><b>Shape</b><span>make it clear</span></article><article><small>03</small><b>Ship</b><span>keep improving</span></article></div>
-              </div>
-              <div className="product-window-foot"><span>INNOFLOWLINK TECH</span><span>DESIGN · BUILD · DELIVER</span></div>
+          <div className="hero-logo-wrap" aria-label="InnoFlowlink Tech company logo">
+            <div className="hero-logo-ring">
+              <img
+                src="/innoflowlink-logo.jpg"
+                width="360" height="360" fetchPriority="high" decoding="async"
+                alt="InnoFlowlink Tech logo"
+                className="hero-logo-image"
+              />
             </div>
           </div>
         </section>)}
@@ -454,17 +454,14 @@ const handleSubmit = async (e) => {
           <div className="team-grid">
             <TeamCard
               initials="A"
-              image="/team/ajay.webp"
-              name="GOGULA AJAY"
+              name="AJAY"
               role="Technical Lead"
               description="Python Full-Stack Developer focused on backend architecture, integrations, AI/ML solutions and final product delivery."
               skills={["Python", "Full Stack", "AI / ML", "APIs"]}
-              github="https://github.com/gogulaajay2004-design"
             />
 
             <TeamCard
               initials="R"
-              image="/team/raneeth-rao.webp"
               name="RANEETH RAO"
               role="Frontend Developer"
               description="Focused on responsive user interfaces, modern frontend development and clean user experiences for web applications."
@@ -474,8 +471,7 @@ const handleSubmit = async (e) => {
 
             <TeamCard
               initials="S"
-              image="/team/y-srinu.webp"
-              name="Y. SRINU"
+              name="SRINU"
               role="Python Full-Stack Developer"
               description="Works across frontend and backend development while supporting requirement gathering and client communication."
               skills={["Python", "Full Stack", "Client Relations"]}
@@ -484,8 +480,7 @@ const handleSubmit = async (e) => {
 
             <TeamCard
               initials="SK"
-              image="/team/s-k-siddhik.webp"
-              name="S.K. SIDDHIK"
+              name="SIDDHIK"
               role="Java Full-Stack Developer"
               description="Builds Java-based applications and supports full-stack development, project integration and client communication."
               skills={["Java", "Full Stack", "Integration"]}
@@ -546,16 +541,6 @@ const handleSubmit = async (e) => {
               text="We provide agreed post-delivery support and help with future improvements."
               fullWidth
             />
-          </div>
-        </section>)}
-
-
-        {(home) && (<section className="section faq" id="faq">
-          <SectionHeading label="FAQ" title="A few things to know" description="Clear answers before we start building." />
-          <div className="faq-list">
-            <details><summary>What can InnoFlowlink Tech build?</summary><p>Websites, web applications, mobile app experiences, APIs, dashboards and AI-enabled software.</p></details>
-            <details><summary>How does a project begin?</summary><p>Share your idea through the enquiry form. We will review the requirements and discuss the next steps with you.</p></details>
-            <details><summary>Can you work with an existing product?</summary><p>Yes. Tell us what you already have and what you want to improve, and we can discuss a suitable scope.</p></details>
           </div>
         </section>)}
 
@@ -749,7 +734,7 @@ const handleSubmit = async (e) => {
 
           <div className="footer-brand">
             <a href="/#home" className="logo">
-              <span className="brand-mark"><img src="/innoflowlink-logo.jpg" width="42" height="42" alt="" /></span>
+              <span className="logo-line"></span>
               InnoFlowlink Tech
             </a>
 
@@ -897,7 +882,6 @@ function SolutionCard({
 
 function TeamCard({
   initials,
-  image,
   name,
   role,
   description,
@@ -907,16 +891,8 @@ function TeamCard({
   return (
     <article className="team-card">
 
-      <div className={`team-avatar${image ? " team-avatar-photo" : ""}`}>
-        {image ? (
-          <img
-            src={image}
-            alt={`${name}, ${role} at InnoFlowlink Tech`}
-            width="600"
-            height="720"
-            loading="lazy"
-          />
-        ) : initials}
+      <div className="team-avatar">
+        {initials}
       </div>
 
       <h3>{name}</h3>
@@ -980,3 +956,5 @@ function ProcessStep({
     </article>
   );
 }
+
+
